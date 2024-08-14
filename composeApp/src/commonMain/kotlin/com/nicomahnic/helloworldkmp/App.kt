@@ -4,9 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,6 +17,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.transitions.CrossfadeTransition
+import com.nicomahnic.helloworldkmp.bottomBar.BottomBarScreen
 
 @Composable
 fun App() {
@@ -45,6 +46,9 @@ class MainScreen : Screen {
             }
             Button(onClick = { navigator.push(ThirdScreen()) }) {
                 Text("Navegar a AZUL")
+            }
+            Button(onClick = { navigator.push(BottomBarScreen()) }) {
+                Text("Navegar a BottomBarScreen")
             }
         }
     }

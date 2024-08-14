@@ -50,6 +50,7 @@ kotlin {
             implementation(libs.voyager.transitions)
             implementation(libs.voyager.tabNavigator)
             implementation(libs.voyager.screenModel)
+            implementation(libs.multiplatform.settings)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

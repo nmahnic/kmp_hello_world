@@ -18,6 +18,7 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.transitions.CrossfadeTransition
 import com.nicomahnic.helloworldkmp.bottomBar.BottomBarScreen
+import com.nicomahnic.helloworldkmp.persistence.PersistenceScreen
 
 @Composable
 fun App() {
@@ -49,6 +50,9 @@ class MainScreen : Screen {
             }
             Button(onClick = { navigator.push(BottomBarScreen()) }) {
                 Text("Navegar a BottomBarScreen")
+            }
+            Button(onClick = { navigator.push(PersistenceScreen()) }) {
+                Text("Navegar a Persistencia")
             }
         }
     }

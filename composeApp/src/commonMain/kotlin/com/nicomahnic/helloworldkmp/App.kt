@@ -42,6 +42,8 @@ class MainScreen : Screen {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceAround
         ) {
+            val info = DeviceInfo().getDeviceInfo()
+            Text("Hola $info")
             Button(onClick = { navigator.push(SecondScreen()) }) {
                 Text("Navegar a ROJO")
             }

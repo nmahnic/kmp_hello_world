@@ -3,7 +3,9 @@ package com.nicomahnic.helloworldkmp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,6 +19,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.transitions.CrossfadeTransition
+import com.nicomahnic.helloworldkmp.api.ApiScreen
 import com.nicomahnic.helloworldkmp.bottomBar.BottomBarScreen
 import com.nicomahnic.helloworldkmp.persistence.PersistenceScreen
 
@@ -37,6 +40,7 @@ class MainScreen : Screen {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
+
         Column(
             modifier = Modifier.fillMaxSize().background(Color.Green),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -44,17 +48,26 @@ class MainScreen : Screen {
         ) {
             val info = DeviceInfo().getDeviceInfo()
             Text("Hola $info")
-            Button(onClick = { navigator.push(SecondScreen()) }) {
-                Text("Navegar a ROJO")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                Button(onClick = { navigator.push(SecondScreen()) }) {
+                    Text("Navegar a ROJO")
+                }
+                Button(onClick = { navigator.push(ThirdScreen()) }) {
+                    Text("Navegar a AZUL")
+                }
             }
-            Button(onClick = { navigator.push(ThirdScreen()) }) {
-                Text("Navegar a AZUL")
-            }
+
             Button(onClick = { navigator.push(BottomBarScreen()) }) {
                 Text("Navegar a BottomBarScreen")
             }
             Button(onClick = { navigator.push(PersistenceScreen()) }) {
                 Text("Navegar a Persistencia")
+            }
+            Button(onClick = { navigator.push(ApiScreen()) }) {
+                Text("Navegar a Ktor")
             }
         }
     }

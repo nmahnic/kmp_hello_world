@@ -3,6 +3,7 @@ package com.nicomahnic.helloworldkmp.api.network
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.api.createClientPlugin
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.statement.request
 import io.ktor.http.ContentType
 import io.ktor.serialization.kotlinx.json.json
@@ -10,9 +11,7 @@ import kotlinx.serialization.json.Json
 
 object NetworkUtils {
 
-    private const val ACCESS_TOKEN = "79c99fda9894cf4017793cdb40721cb6"
-    private const val BASE_URL = "https://www.superheroapi.com/api/$ACCESS_TOKEN"
-    const val URL = "$BASE_URL/search/a"
+    private const val BASE_URL = "https://thronesapi.com/api/v2/"
 
     private val CustomLoggerPlugin = createClientPlugin("CustomLoggerPlugin") {
         onRequest { request, content ->
@@ -35,5 +34,6 @@ object NetworkUtils {
         install(ContentNegotiation) {
             json(json = Json { ignoreUnknownKeys = true }, contentType = ContentType.Any)
         }
+        defaultRequest { url(BASE_URL) }
     }
 }

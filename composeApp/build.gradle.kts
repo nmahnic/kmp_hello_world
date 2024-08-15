@@ -14,7 +14,7 @@ kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     
@@ -57,6 +57,9 @@ kotlin {
             implementation(libs.ktor.client.negotiation)
             implementation(libs.ktor.client.logging)
             implementation(libs.kotlin.serialization)
+            implementation(libs.moko.mvvm.core)
+            implementation(libs.moko.mvvm.compose)
+            implementation(libs.kamel)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -95,8 +98,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
